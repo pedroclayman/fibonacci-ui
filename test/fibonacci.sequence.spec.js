@@ -5,7 +5,6 @@
       var sequence;
 
       beforeEach(function() {
-        console.log('before');
         module('fibonacci');
           inject([
             'fibonacci.sequence',
@@ -15,8 +14,14 @@
           ]);
       });
 
-      it('should work', function() {
-        expect(true).toBeTruthy();
+      it('should return a correct fibonacci sequence', function() {
+        var result = sequence.get(11);
+        expect(result).toEqual([1,1,2,3,5,8,13,21,34,55,89]);
+      });
+
+      it('should return a sequence of length 0 when executed without args', function() {
+        var result = sequence.get();
+        expect(result).toEqual([]);
       });
     });
 })();
