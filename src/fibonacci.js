@@ -6,8 +6,18 @@
     module.directive('fibonacci', [
 
       function() {
-        restrict: 'EA',
-        transclude: true
+        return {
+          restrict: 'EA',
+          transclude: true
+        };
+
       }
-    ])
+    ]);
+
+    module.factory('fibonacci.sequence', [
+
+      function() {
+        return {};
+      }
+    ]);
 })();
