@@ -45,7 +45,10 @@
             }
           ]
 
-          expect(result).toEqual(expectation);
+          expect(result[0]).toEqual(expectation[0]);
+          expect(result[1]).toEqual(expectation[1]);
+          expect(result[2]).toEqual(expectation[2]);
+          expect(result[3]).toEqual(expectation[3]);
       });
     });
 })();
