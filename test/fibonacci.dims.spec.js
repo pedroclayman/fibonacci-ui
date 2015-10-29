@@ -16,26 +16,32 @@
 
 
       it('should return a sequence of dimensions', function() {
-          var result = dims.get(4, 1920);
+          var result = dims.get(4);
 
           var expectation = [
             {
               top: 0,
               left: 0,
-              width: 1152,
-              height: 1152
+              width: 3/5.0,
+              height: 3/5.0
             },
             {
               top: 0,
-              left: 1152,
-              width: 768,
-              height: 768
+              left: 3/5.0,
+              width: 2/5.0,
+              height: 2/5.0
             },
             {
-              top: 768,
-              left: 1536,
-              width: 384,
-              height: 384
+              top: 2/5.0,
+              left: 4/5.0,
+              width: 1/5.0,
+              height: 1/5.0
+            },
+            {
+              top: 2/5.0,
+              left: 3/5.0,
+              width: 1/5.0,
+              height: 1/5.0
             }
           ]
 
