@@ -4,11 +4,37 @@
   var module = angular.module('fibonacci', []);
 
   module.directive('fibonacci', [
+    'fibonacci.dims',
+    function(dims) {
 
-    function() {
+      function preLink(scope, element, attrs) {
+        var width = element.prop('offsetWidth');
+        console.log('width', width);
+        element.addClass('fibonacci');
+        element[0].style.position = 'relative';
+        var children = element[0].querySelectorAll('[ng-transclude] > *');
+
+        var fib = dims.get(children.length);
+
+        for (var i = 0; i < children.length; i++) {
+          var child = children[i];
+          child.style.position = 'absolute';
+          child.style.top = fib[i].top * width + 'px';
+          child.style.left = fib[i].left * width + 'px';
+          child.style.width = fib[i].width * width + 'px';
+          child.style.height = fib[i].height * width + 'px';
+        }
+      }
+
       return {
         restrict: 'EA',
-        transclude: true
+        transclude: true,
+        template: '<div ng-transclude></div>',
+        compile: function(scope, tElement, tAttrs) {
+          return {
+            post: preLink
+          }
+        }
       };
 
     }
@@ -73,7 +99,7 @@
               };
               break;
           }
-          
+
 
           result.push(dim);
           previous = dim;
